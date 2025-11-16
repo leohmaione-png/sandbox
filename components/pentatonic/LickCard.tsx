@@ -26,7 +26,7 @@ const levelLabels: Record<LickLevel, string> = {
 };
 
 export function LickCard({ lick, transposedTab }: LickCardProps) {
-  const { play, stop, isPlaying, isLoading } = useLickPlayer(transposedTab);
+  const { play, stop, isPlaying, isLoading } = useLickPlayer(transposedTab, lick.tempo);
 
   const handlePlayClick = () => {
     if (isPlaying) {

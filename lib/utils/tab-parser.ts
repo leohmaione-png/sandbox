@@ -15,10 +15,14 @@ const STRING_MAP: Record<string, number> = {
   'e': 5  // High e
 };
 
+// Chromatic notes
+const CHROMATIC = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
 interface Note {
   note: string;
   time: number;
   duration: number;
+  velocity: number;
 }
 
 /**
@@ -29,13 +33,13 @@ function fretToNote(stringName: string, fret: number): string {
   if (stringIndex === undefined) return '';
 
   const openNote = STANDARD_TUNING[stringIndex];
-  const [noteName, octave] = [openNote[0], parseInt(openNote[1])];
+  const noteName = openNote.slice(0, -1);
+  const octave = parseInt(openNote.slice(-1));
 
-  // Chromatic scale starting from the open string
-  const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-  const noteIndex = notes.indexOf(noteName);
+  // Find the open note index in chromatic scale
+  const noteIndex = CHROMATIC.indexOf(noteName);
 
-  // Calculate the resulting note
+  // Calculate the resulting note after adding frets
   let resultIndex = noteIndex + fret;
   let resultOctave = octave;
 
@@ -44,65 +48,95 @@ function fretToNote(stringName: string, fret: number): string {
     resultOctave++;
   }
 
-  return notes[resultIndex] + resultOctave;
+  return CHROMATIC[resultIndex] + resultOctave;
 }
 
 /**
  * Parses a tablature string and extracts notes with timing
  */
-export function parseTab(tab: string): Note[] {
+export function parseTab(tab: string, bpm: number = 120): Note[] {
   const lines = tab.trim().split('\n');
   const notes: Note[] = [];
 
-  // Filter out annotation lines and empty lines
+  // Filter to get only the tab lines (strings)
   const tabLines = lines.filter(line => {
     const trimmed = line.trim();
-    return trimmed.match(/^[eEADGBdgb]\|/) !== null;
+    return /^[eEADGBdgb]\|/.test(trimmed);
   });
 
   if (tabLines.length === 0) return notes;
 
-  // Process each string line
+  // Calculate note duration based on BPM (quarter note in seconds)
+  const beatDuration = 60 / bpm;
+  const noteDuration = beatDuration / 2; // Eighth note duration
+
+  // Build a map of column -> notes played at that column
+  const columnNotes = new Map<number, { string: string; fret: number }[]>();
+
   tabLines.forEach(line => {
-    const stringMatch = line.match(/^([eEADGBdgb])\|(.*)\|/);
-    if (!stringMatch) return;
+    const match = line.match(/^([eEADGBdgb])\|(.*)\|/);
+    if (!match) return;
 
-    const stringName = stringMatch[1];
-    const content = stringMatch[2];
+    const stringName = match[1];
+    const content = match[2];
 
-    // Find all numbers (frets) in the line
-    let position = 0;
-    for (let i = 0; i < content.length; i++) {
+    let i = 0;
+    let column = 0;
+
+    while (i < content.length) {
       const char = content[i];
 
-      // Check if it's a number
       if (char.match(/\d/)) {
-        // Check for two-digit numbers
-        let fret = parseInt(char);
+        // Found a number - check for two digits
+        let fretStr = char;
         if (i + 1 < content.length && content[i + 1].match(/\d/)) {
-          fret = parseInt(char + content[i + 1]);
-          i++; // Skip next digit
+          fretStr += content[i + 1];
+          i++;
         }
 
-        // Calculate time based on position in the line
-        const time = position * 0.15; // 150ms per position
+        const fret = parseInt(fretStr);
 
-        const note = fretToNote(stringName, fret);
-        if (note) {
-          notes.push({
-            note,
-            time,
-            duration: 0.3 // Default duration
-          });
+        if (!columnNotes.has(column)) {
+          columnNotes.set(column, []);
         }
+        columnNotes.get(column)!.push({ string: stringName, fret });
       }
 
-      position++;
+      i++;
+      column++;
     }
   });
 
-  // Sort notes by time
-  notes.sort((a, b) => a.time - b.time);
+  // Convert column notes to timed notes
+  const sortedColumns = Array.from(columnNotes.keys()).sort((a, b) => a - b);
+
+  sortedColumns.forEach((column, index) => {
+    const notesAtColumn = columnNotes.get(column)!;
+    const time = index * noteDuration;
+
+    notesAtColumn.forEach(({ string: stringName, fret }) => {
+      const note = fretToNote(stringName, fret);
+      if (note) {
+        notes.push({
+          note,
+          time,
+          duration: noteDuration * 0.9, // Slightly shorter for separation
+          velocity: 0.8
+        });
+      }
+    });
+  });
 
   return notes;
+}
+
+/**
+ * Extract BPM from tempo string like "90-120 BPM"
+ */
+export function parseBPM(tempoString: string): number {
+  const match = tempoString.match(/(\d+)(?:-\d+)?\s*BPM/i);
+  if (match) {
+    return parseInt(match[1]);
+  }
+  return 120; // Default BPM
 }
