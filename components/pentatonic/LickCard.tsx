@@ -2,10 +2,7 @@
 
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Play, Pause, Loader2 } from "lucide-react";
 import { Lick, LickLevel } from "@/lib/data/licks";
-import { useLickPlayer } from "@/hooks/useLickPlayer";
 import { cn } from "@/lib/utils";
 
 interface LickCardProps {
@@ -26,15 +23,6 @@ const levelLabels: Record<LickLevel, string> = {
 };
 
 export function LickCard({ lick, transposedTab }: LickCardProps) {
-  const { play, stop, isPlaying, isLoading } = useLickPlayer(transposedTab, lick.tempo);
-
-  const handlePlayClick = () => {
-    if (isPlaying) {
-      stop();
-    } else {
-      play();
-    }
-  };
 
   return (
     <Card className="p-6">
@@ -46,25 +34,7 @@ export function LickCard({ lick, transposedTab }: LickCardProps) {
           >
             {levelLabels[lick.level]}
           </Badge>
-          <div className="flex items-center gap-2">
-            <h4 className="text-lg font-semibold">{lick.title}</h4>
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={handlePlayClick}
-              disabled={isLoading}
-              className="h-8 w-8 p-0"
-              title={isPlaying ? "Stop" : "Play lick"}
-            >
-              {isLoading ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
-              ) : isPlaying ? (
-                <Pause className="h-4 w-4" />
-              ) : (
-                <Play className="h-4 w-4" />
-              )}
-            </Button>
-          </div>
+          <h4 className="text-lg font-semibold">{lick.title}</h4>
         </div>
         <span className="text-sm font-medium text-muted-foreground">
           {lick.tempo}

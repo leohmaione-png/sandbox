@@ -96,6 +96,18 @@ export function parseTab(tab: string, bpm: number = 120): Note[] {
 
         const fret = parseInt(fretStr);
 
+        // Skip special notation characters after fret number (PH, b, h, p, r, ~, etc.)
+        let skipChars = 0;
+        while (i + 1 + skipChars < content.length) {
+          const nextChar = content[i + 1 + skipChars];
+          if (nextChar.match(/[PHbhpr~()\d]/)) {
+            skipChars++;
+          } else {
+            break;
+          }
+        }
+        i += skipChars;
+
         if (!columnNotes.has(column)) {
           columnNotes.set(column, []);
         }
