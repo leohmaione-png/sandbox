@@ -9,6 +9,7 @@ import { ExercisesSection } from "@/components/features/ExercisesSection";
 import { ProgressionsSection } from "@/components/features/ProgressionsSection";
 
 export default function Home() {
+  // Main page component - reorganized licks by difficulty
   const [activeSection, setActiveSection] = useState('pentatonic');
 
   const renderSection = () => {
