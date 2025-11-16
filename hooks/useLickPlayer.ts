@@ -9,6 +9,7 @@ export function useLickPlayer(tab: string, tempo: string) {
   const [isLoading, setIsLoading] = useState(false);
   const synthRef = useRef<Tone.PolySynth | null>(null);
   const partRef = useRef<Tone.Part | null>(null);
+  const reverbRef = useRef<Tone.Reverb | null>(null);
 
   // Initialize synth on mount with realistic guitar sound
   useEffect(() => {
@@ -20,12 +21,12 @@ export function useLickPlayer(tab: string, tempo: string) {
     }).toDestination();
 
     // Add some reverb for more natural sound
-    const reverb = new Tone.Reverb({
+    reverbRef.current = new Tone.Reverb({
       decay: 1.5,
       wet: 0.2
     }).toDestination();
 
-    synthRef.current.connect(reverb);
+    synthRef.current.connect(reverbRef.current);
 
     // Set volume
     synthRef.current.volume.value = -6;
@@ -37,7 +38,9 @@ export function useLickPlayer(tab: string, tempo: string) {
       if (partRef.current) {
         partRef.current.dispose();
       }
-      reverb.dispose();
+      if (reverbRef.current) {
+        reverbRef.current.dispose();
+      }
     };
   }, []);
 
