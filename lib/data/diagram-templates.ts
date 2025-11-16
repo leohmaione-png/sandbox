@@ -1,4 +1,5 @@
 // Diagram templates - Relative patterns (offsets from starting fret)
+// Pure pentatonic shapes without extra passing tones
 export interface DiagramPattern {
   e: number[];
   B: number[];
@@ -19,60 +20,60 @@ export const diagramTemplates: Record<string, DiagramTemplate> = {
     title: 'Posição 1 - Padrão Box',
     info: 'Posição mais usada no blues. Memorize este padrão primeiro!',
     pattern: {
-      e: [0, 3, 4],
-      B: [0, 3, 4],
-      G: [0, 2, 4],
-      D: [0, 2, 4],
-      A: [0, 2, 4],
-      E: [0, 3, 4]
+      e: [0, 3],      // Apenas as notas da pentatônica
+      B: [0, 3],      // Removido o offset 4 (nota extra)
+      G: [0, 2],      // Removido o offset 4
+      D: [0, 2],      // Removido o offset 4
+      A: [0, 2],      // Removido o offset 4
+      E: [0, 3]       // Removido o offset 4
     }
   },
   '2': {
     title: 'Posição 2 - Extensão',
     info: 'Extensão natural da Posição 1. Ótima para frases ascendentes.',
     pattern: {
-      e: [0, 2, 4],
-      B: [0, 2, 4],
-      G: [0, 3, 4],
-      D: [0, 3, 4],
-      A: [0, 3, 4],
-      E: [0, 2, 4]
+      e: [0, 2],
+      B: [0, 2],
+      G: [0, 2],      // Corrigido: [0, 2] ao invés de [0, 3, 4]
+      D: [0, 2],      // Corrigido
+      A: [0, 2],      // Corrigido
+      E: [0, 2]
     }
   },
   '3': {
     title: 'Posição 3 - Oitava',
     info: 'Repete o padrão da Posição 1 em região mais aguda.',
     pattern: {
-      e: [0, 3, 4],
-      B: [0, 2, 4],
-      G: [0, 2, 4],
-      D: [0, 2, 4],
-      A: [0, 3, 4],
-      E: [0, 3, 4]
+      e: [0, 3],      // Corrigido: removido offset 4
+      B: [0, 2],
+      G: [0, 2],
+      D: [0, 2],
+      A: [0, 3],
+      E: [0, 3]
     }
   },
   '4': {
     title: 'Posição 4 - Cordas Soltas',
     info: 'Região grave. Ótima para riffs pesados e som encorpado.',
     pattern: {
-      e: [0, 3, 5],
-      B: [0, 1, 3, 5],
-      G: [0, 2, 5],
-      D: [0, 2, 5],
-      A: [0, 2, 5],
-      E: [0, 3, 5]
+      e: [0, 3],      // Corrigido: removido offset 5
+      B: [0, 3],      // Corrigido: apenas 2 notas
+      G: [0, 2],      // Corrigido: removido offset 5
+      D: [0, 2],      // Corrigido: removido offset 5
+      A: [0, 2],      // Corrigido: removido offset 5
+      E: [0, 3]       // Corrigido: removido offset 5
     }
   },
   '5': {
     title: 'Posição 5 - Conexão',
     info: 'Posição de transição. Use para conectar diferentes regiões do braço.',
     pattern: {
-      e: [0, 1, 3, 4],
-      B: [0, 2, 3, 4],
-      G: [1, 2, 3, 4],
-      D: [1, 2, 3, 4],
-      A: [1, 2, 3, 4],
-      E: [0, 1, 3, 4]
+      e: [0, 3],      // Corrigido: [0, 3] ao invés de [0, 1, 3, 4]
+      B: [0, 3],      // Corrigido: [0, 3] ao invés de [0, 2, 3, 4]
+      G: [0, 2],      // Corrigido: [0, 2] ao invés de [1, 2, 3, 4]
+      D: [0, 2],      // Corrigido
+      A: [0, 2],      // Corrigido
+      E: [0, 3]       // Corrigido: [0, 3] ao invés de [0, 1, 3, 4]
     }
   },
   'full': {
