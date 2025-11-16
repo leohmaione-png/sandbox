@@ -8,275 +8,249 @@ export interface Lick {
   tempo: string;
   description: string;
   notes?: string;
+  hasBlueNotes: boolean;
 }
 
-export interface Guitarist {
+export interface LickCategory {
   id: string;
+  level: LickLevel;
   name: string;
-  style: string;
-  tags: string[];
   description: string;
   licks: Lick[];
 }
 
-export const guitarists: Guitarist[] = [
+export const lickCategories: LickCategory[] = [
   {
-    id: 'zakk',
-    name: 'Zakk Wylde',
-    style: 'Zakk Wylde Style',
-    tags: ['Pinch Harmonics', 'Agressivo', 'Power'],
-    description: 'Características: Pinch harmonics (harmônicos artificiais), bends agressivos, uso pesado da pentatônica, precisão técnica e força.',
+    id: 'beginner',
+    level: 'beginner',
+    name: 'Iniciante',
+    description: 'Licks fundamentais para começar. Foco em movimentos simples e memorização das posições.',
     licks: [
       {
-        id: 'zakk-1',
-        title: 'Pinch Harmonic Attack',
-        level: 'intermediate',
+        id: 'beginner-1',
+        title: 'Pentatônica Pura - Subida Simples',
+        level: 'beginner',
+        hasBlueNotes: false,
         tab: `e|--------------------------------|
 B|--------------------------------|
-G|---5PH---7PH---5PH--------------|
+G|---5---7------------------------|
+D|----------5---7-----------------|
+A|--------------------------------|
+E|--------------------------------|`,
+        tempo: '60-90 BPM',
+        description: 'Movimento básico ascendente usando apenas notas da pentatônica pura. Sem blue notes. Perfeito para iniciantes.',
+        notes: 'Use palhetada alternada: para baixo, para cima, para baixo, para cima'
+      },
+      {
+        id: 'beginner-2',
+        title: 'Descida Clássica',
+        level: 'beginner',
+        hasBlueNotes: false,
+        tab: `e|--------------------------------|
+B|---8---5------------------------|
+G|-----------7---5----------------|
+D|-------------------7---5--------|
+A|--------------------------------|
+E|--------------------------------|`,
+        tempo: '60-90 BPM',
+        description: 'Descida melódica pela pentatônica. Um dos padrões mais usados no rock e blues.',
+        notes: 'Toque com feeling, não tenha pressa'
+      },
+      {
+        id: 'beginner-3',
+        title: 'Introdução à Blue Note',
+        level: 'beginner',
+        hasBlueNotes: true,
+        tab: `e|--------------------------------|
+B|--------------------------------|
+G|---5---6---7---5----------------|
+D|--------------------------------|
+A|--------------------------------|
+E|--------------------------------|`,
+        tempo: '70-100 BPM',
+        description: 'Primeiro contato com a blue note (b5). Note o som "sujo" e característico do blues na casa 6.',
+        notes: '6 na corda G = blue note (b5). Essa nota dá o sabor do blues!'
+      },
+      {
+        id: 'beginner-4',
+        title: 'Bend Básico',
+        level: 'beginner',
+        hasBlueNotes: false,
+        tab: `e|--------------------------------|
+B|--------------------------------|
+G|---7b(8)---7---5----------------|
+D|-------------------7------------|
+A|--------------------------------|
+E|--------------------------------|`,
+        tempo: '60-90 BPM',
+        description: 'Primeiro bend (1/2 tom). Empurre a corda para cima até alcançar o som da casa 8.',
+        notes: 'b(8) = bend de meio tom. Use o dedo anular com apoio dos outros dedos'
+      }
+    ]
+  },
+  {
+    id: 'intermediate',
+    level: 'intermediate',
+    name: 'Intermediário',
+    description: 'Licks que combinam técnicas. Introdução a bends maiores, slides e blue notes.',
+    licks: [
+      {
+        id: 'intermediate-1',
+        title: 'Lick de Blues Clássico',
+        level: 'intermediate',
+        hasBlueNotes: true,
+        tab: `e|--------------------------------|
+B|---8---5------------------------|
+G|-----------6b(7)---5------------|
 D|-----------------------7---5----|
 A|--------------------------------|
 E|--------------------------------|`,
-        tempo: '90-120 BPM',
-        description: 'Toque a nota normalmente, mas com o polegar da mão direita tocando levemente a corda logo após a palheta. Som agressivo característico do Zakk!',
-        notes: 'PH = Pinch Harmonic (harmônico artificial)'
+        tempo: '70-100 BPM',
+        description: 'Lick clássico de blues usando a blue note com bend. Muito usado por B.B. King e Eric Clapton.',
+        notes: 'Casa 6 na corda G = blue note. Faça o bend até meio tom (casa 7)'
       },
       {
-        id: 'zakk-2',
-        title: 'Wide Vibrato Power Lick',
-        level: 'advanced',
-        tab: `e|--------------------------------|
-B|--------------------------------|
-G|---5---7b(9)~~~~----------------|
-D|----------------7---5---7---5---|
+        id: 'intermediate-2',
+        title: 'Double Stop Blues',
+        level: 'intermediate',
+        hasBlueNotes: false,
+        tab: `e|---5----------------------------|
+B|---5---8---5--------------------|
+G|---5---7---5--------------------|
+D|--------------------------------|
 A|--------------------------------|
 E|--------------------------------|`,
         tempo: '80-110 BPM',
-        description: 'Bend grande (2 casas!) seguido de vibrato wide. Use força! Depois descida rápida.',
-        notes: 'b(9) = bend de 1 tom inteiro, ~~~~ = vibrato largo e agressivo'
+        description: 'Toque duas cordas simultaneamente. Som cheio característico do blues rock.',
+        notes: 'Toque as cordas B e G juntas. Use o dedo indicador em barra'
       },
       {
-        id: 'zakk-3',
-        title: 'Pentatonic Fury',
+        id: 'intermediate-3',
+        title: 'Rock Lick com Blue Note',
+        level: 'intermediate',
+        hasBlueNotes: true,
+        tab: `e|--------------------------------|
+B|--------------------------------|
+G|---5---6---5--------------------|
+D|-------------7---5---7----------|
+A|--------------------------------|
+E|--------------------------------|`,
+        tempo: '90-120 BPM',
+        description: 'Combinação de blue note com descida rápida. Muito usado no rock clássico.',
+        notes: 'A blue note (casa 6) adiciona tensão que resolve na descida'
+      },
+      {
+        id: 'intermediate-4',
+        title: 'Bend e Release',
+        level: 'intermediate',
+        hasBlueNotes: false,
+        tab: `e|--------------------------------|
+B|---8b(10)r8---5-----------------|
+G|----------------7---5-----------|
+D|----------------------7---5-----|
+A|--------------------------------|
+E|--------------------------------|`,
+        tempo: '80-110 BPM',
+        description: 'Bend de 1 tom completo com release. Técnica essencial para expressividade.',
+        notes: 'b(10) = bend de 1 tom, r = release (solte o bend voltando ao tom original)'
+      },
+      {
+        id: 'intermediate-5',
+        title: 'Turnaround com Blue Note',
+        level: 'intermediate',
+        hasBlueNotes: true,
+        tab: `e|--------------------------------|
+B|--------------------------------|
+G|---5---6b(7)r6---5--------------|
+D|-------------------7---5--------|
+A|-------------------------7------|
+E|--------------------------------|`,
+        tempo: '70-100 BPM',
+        description: 'Turnaround clássico usando bend na blue note. Perfeito para finais de progressão.',
+        notes: 'Blue note com bend e release cria tensão e resolução'
+      }
+    ]
+  },
+  {
+    id: 'advanced',
+    level: 'advanced',
+    name: 'Avançado',
+    description: 'Licks complexos com técnicas avançadas. Combinações rápidas, bends múltiplos e frases longas.',
+    licks: [
+      {
+        id: 'advanced-1',
+        title: 'Speed Run Pentatônico',
         level: 'advanced',
+        hasBlueNotes: false,
         tab: `e|--------------------------------|
 B|---8-5-------8-5----------------|
 G|-------7-5-------7-5-7-5--------|
-D|-------------------------7-5-7-5|
+D|-------------------------7-5----|
 A|--------------------------------|
 E|--------------------------------|`,
         tempo: '120-160 BPM',
-        description: 'Descida agressiva pela pentatônica. Palhetada alternada perfeita é essencial. Ataque forte!',
-        notes: 'Palhetada alternada rápida e precisa!'
+        description: 'Descida rápida pela pentatônica. Requer palhetada alternada precisa e velocidade.',
+        notes: 'Palhetada alternada estrita! Comece devagar e aumente gradualmente'
       },
       {
-        id: 'zakk-4',
-        title: 'Double Stop Power',
-        level: 'intermediate',
-        tab: `e|---5PH-----8PH-----5PH----------|
-B|---5-------8-------5------------|
-G|--------------------------------|
-D|--------------------------------|
-A|--------------------------------|
-E|--------------------------------|`,
-        tempo: '90-120 BPM',
-        description: 'Toque as duas cordas juntas aplicando pinch harmonic. Som massivo!',
-        notes: 'Double stops com pinch harmonics!'
-      }
-    ]
-  },
-  {
-    id: 'page',
-    name: 'Jimmy Page',
-    style: 'Jimmy Page Style',
-    tags: ['Blues Rock', 'Melódico', 'Expressivo'],
-    description: 'Características: Bends melódicos e expressivos, uso criativo da pentatônica, frases vocais, dinâmica entre notas sustentadas e rápidas.',
-    licks: [
-      {
-        id: 'page-1',
-        title: 'Expressive Bend Phrase',
-        level: 'intermediate',
-        tab: `e|--------------------------------|
-B|---5~~~-------------------------|
-G|--------7b(8)~~~---7---5--------|
-D|-------------------------7------|
-A|--------------------------------|
-E|--------------------------------|`,
-        tempo: '70-100 BPM',
-        description: 'Comece com vibrato na corda B, depois bend expressivo na corda G. Deixe as notas respirarem!',
-        notes: '~~~ = vibrato expressivo'
-      },
-      {
-        id: 'page-2',
-        title: 'Melodic Climb',
-        level: 'intermediate',
-        tab: `e|--------------------------------|
-B|---5---8---5--------------------|
-G|-------------7b(8)r7---5--------|
-D|-------------------------7---5--|
-A|--------------------------------|
-E|--------------------------------|`,
-        tempo: '80-110 BPM',
-        description: 'Frase melódica ascendente com bend e release. Muito usado pelo Page!',
-        notes: 'r = release do bend'
-      },
-      {
-        id: 'page-3',
-        title: 'Sustained Note Magic',
-        level: 'beginner',
-        tab: `e|--------------------------------|
-B|---8~~~~~~~~~~~~----------------|
-G|----------------7---5---7-------|
-D|--------------------------------|
-A|--------------------------------|
-E|--------------------------------|`,
-        tempo: '60-90 BPM',
-        description: 'Nota longa com vibrato seguida de frase descendente. Controle de dinâmica!',
-        notes: 'Vibrato controlado e expressivo'
-      },
-      {
-        id: 'page-4',
-        title: 'Rock Signature Lick',
+        id: 'advanced-2',
+        title: 'Blue Note Explosion',
         level: 'advanced',
-        tab: `e|--------------------------------|
-B|---8b(10)r8-5-------------------|
-G|--------------7-5---------------|
-D|------------------7-5---7-------|
-A|--------------------------------|
-E|--------------------------------|`,
-        tempo: '100-130 BPM',
-        description: 'Bend completo com release seguido de descida melódica. Classic Page!',
-        notes: 'b(10) = bend de 1 tom'
-      }
-    ]
-  },
-  {
-    id: 'clapton',
-    name: 'Eric Clapton',
-    style: 'Eric Clapton Style',
-    tags: ['Blues Puro', 'Feeling', 'Suave'],
-    description: 'Características: Feeling blues autêntico, bends sutis e precisos, vibrato controlado, notas "cantadas", economia de movimento.',
-    licks: [
-      {
-        id: 'clapton-1',
-        title: 'Classic Blues Bend',
-        level: 'beginner',
-        tab: `e|--------------------------------|
-B|--------------------------------|
-G|---7b(8)~~~---7---5-------------|
-D|--------------------7---5-------|
-A|--------------------------------|
-E|--------------------------------|`,
-        tempo: '60-90 BPM',
-        description: 'Bend de meio tom com vibrato controlado. A essência do blues!',
-        notes: 'b(8) = bend de meio tom'
-      },
-      {
-        id: 'clapton-2',
-        title: 'Smooth Descent',
-        level: 'intermediate',
-        tab: `e|--------------------------------|
-B|---8~~~---5---------------------|
-G|------------7~~~---5------------|
-D|---------------------7~~~---5---|
-A|--------------------------------|
-E|--------------------------------|`,
-        tempo: '70-100 BPM',
-        description: 'Descida suave pela pentatônica com vibrato em cada nota. Deixe as notas cantarem!',
-        notes: 'Vibrato sutil em cada nota sustentada'
-      },
-      {
-        id: 'clapton-3',
-        title: 'Triple Stop Blues',
-        level: 'intermediate',
-        tab: `e|---5----------------------------|
-B|---5----------------------------|
-G|---5---7b(8)~~~---7---5---------|
-D|--------------------------------|
-A|--------------------------------|
-E|--------------------------------|`,
-        tempo: '80-110 BPM',
-        description: 'Triple stop (três cordas) seguido de bend. Som cheio característico!',
-        notes: 'Toque as três cordas juntas'
-      },
-      {
-        id: 'clapton-4',
-        title: 'Blues Turnaround',
-        level: 'advanced',
+        hasBlueNotes: true,
         tab: `e|--------------------------------|
 B|---8-5--------------------------|
-G|-------7-5---7b(8)r7-5----------|
-D|------------------------7---5---|
+G|-------6b(7)r6-5---6---5--------|
+D|---------------------7---5------|
 A|--------------------------------|
 E|--------------------------------|`,
-        tempo: '90-120 BPM',
-        description: 'Turnaround clássico de blues com bend e release. Ótimo para finais de progressão!',
-        notes: 'r = release suave do bend'
-      }
-    ]
-  },
-  {
-    id: 'hendrix',
-    name: 'Jimi Hendrix',
-    style: 'Jimi Hendrix Style',
-    tags: ['Psicodélico', 'Inovador', 'Rítmico'],
-    description: 'Características: Mistura de ritmo e lead, uso criativo de efeitos, hammer-ons e pull-offs frequentes, cordas soltas, frases únicas.',
-    licks: [
-      {
-        id: 'hendrix-1',
-        title: 'Hammer-On Groove',
-        level: 'intermediate',
-        tab: `e|--------------------------------|
-B|---5h8p5------------------------|
-G|---------7-5--------------------|
-D|-------------7-5---7------------|
-A|--------------------------------|
-E|--------------------------------|`,
-        tempo: '90-120 BPM',
-        description: 'Hammer-on e pull-off rápidos seguidos de descida. Técnica característica!',
-        notes: 'h = hammer-on, p = pull-off'
+        tempo: '90-130 BPM',
+        description: 'Múltiplos bends na blue note com resolução. Som autêntico de blues.',
+        notes: 'Controle preciso dos bends é essencial. Cada bend deve alcançar exatamente meio tom'
       },
       {
-        id: 'hendrix-2',
-        title: 'Open String Magic',
-        level: 'beginner',
-        tab: `e|---0---3---5--------------------|
-B|---0---3---5--------------------|
-G|--------------------------------|
-D|--------------------------------|
-A|--------------------------------|
-E|--------------------------------|`,
-        tempo: '80-110 BPM',
-        description: 'Uso de cordas soltas para sonoridade única. Muito Hendrix!',
-        notes: '0 = corda solta'
-      },
-      {
-        id: 'hendrix-3',
-        title: 'Psychedelic Run',
+        id: 'advanced-3',
+        title: 'Lick de Entrada Clássico',
         level: 'advanced',
+        hasBlueNotes: true,
         tab: `e|--------------------------------|
-B|---8-5-------8-5----------------|
-G|-------7-5h7----7-5h7-5---------|
-D|------------------------7-5-----|
-A|--------------------------------|
-E|--------------------------------|`,
+B|--------------------------------|
+G|---5-6-5------------------------|
+D|---------7-5-7-5-7-6-5----------|
+A|-----------------------7-5------|
+E|---------------------------7-5--|`,
         tempo: '100-140 BPM',
-        description: 'Sequência rápida com hammer-ons. Som psicodélico característico!',
-        notes: 'Palhetada alternada + hammer-ons'
+        description: 'Lick longo que viaja por várias cordas. Inclui blue notes (casa 6 na corda G e D).',
+        notes: 'Blue notes nas casas 6 das cordas G e D. Muito usado por guitarristas de blues rock'
       },
       {
-        id: 'hendrix-4',
-        title: 'Rhythmic Lead Fusion',
+        id: 'advanced-4',
+        title: 'Wide Bend Expressivo',
         level: 'advanced',
+        hasBlueNotes: false,
         tab: `e|--------------------------------|
-B|---5---8---5--------------------|
-G|---5---7---5---7b(8)r7-5--------|
-D|-------------------------7------|
+B|--------------------------------|
+G|---7b(9)~~~~---7---5------------|
+D|---------------------7b(9)~~~---|
 A|--------------------------------|
 E|--------------------------------|`,
-        tempo: '110-140 BPM',
-        description: 'Mistura de acordes e lead. Toque rítmico com melodia!',
-        notes: 'Combine ritmo e melodia'
+        tempo: '70-110 BPM',
+        description: 'Bends de 1 tom com vibrato largo. Extremamente expressivo.',
+        notes: 'b(9) = bend de 1 tom completo. ~~~~ = vibrato largo e controlado'
+      },
+      {
+        id: 'advanced-5',
+        title: 'Combo Blues/Rock Definitivo',
+        level: 'advanced',
+        hasBlueNotes: true,
+        tab: `e|-------------------8------------|
+B|---8b(10)r8-5---8---------------|
+G|---5-6b(7)r6-5------------------|
+D|---------------7---5------------|
+A|--------------------------------|
+E|--------------------------------|`,
+        tempo: '90-130 BPM',
+        description: 'Combinação avançada: bends, blue notes, double stops. O melhor do blues e rock em um lick.',
+        notes: 'Múltiplas técnicas: bend de 1 tom na corda B, blue note bend na G, finalizando com double stop'
       }
     ]
   }
