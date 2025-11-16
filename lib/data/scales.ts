@@ -51,7 +51,8 @@ export const transposeOffsets: Record<string, number> = {
   'C': 3
 };
 
-export const keys = ['Am', 'Em', 'Dm', 'Gm', 'Cm', 'A', 'E', 'D', 'G', 'C'] as const;
+// Using only minor keys since pentatonic positions are the same for relative major/minor
+export const keys = ['Am', 'Em', 'Dm', 'Gm', 'Cm'] as const;
 export type Key = typeof keys[number];
 
 export const positions = [

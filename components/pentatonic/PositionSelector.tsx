@@ -21,7 +21,7 @@ export function PositionSelector({ selectedPosition, onPositionChange }: Positio
         Posição:
       </label>
       <Select value={selectedPosition} onValueChange={onPositionChange}>
-        <SelectTrigger id="position-select" className="w-full md:w-[300px]">
+        <SelectTrigger id="position-select" className="w-full">
           <SelectValue placeholder="Selecione a posição" />
         </SelectTrigger>
         <SelectContent>

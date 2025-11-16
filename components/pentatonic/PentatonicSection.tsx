@@ -24,7 +24,7 @@ export function PentatonicSection() {
 
       {/* Controls */}
       <Card className="p-6">
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-[7fr_3fr]">
           <KeySelector
             selectedKey={selectedKey}
             onKeyChange={setSelectedKey}
