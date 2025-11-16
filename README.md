@@ -1,6 +1,6 @@
-# Blues Academy
+# Guitar Notebook
 
-Uma plataforma interativa de aprendizado de guitarra blues, com foco em escalas pentatônicas, licks de guitarristas lendários e exercícios técnicos.
+Your interactive guitar learning companion - master scales, licks, and techniques from legendary guitarists.
 
 ## 🎸 Recursos
 

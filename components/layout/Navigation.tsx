@@ -18,7 +18,7 @@ export function Navigation({ activeSection, onSectionChange }: NavigationProps) 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center px-4">
-        <div className="text-xl font-bold">Blues Academy</div>
+        <div className="text-xl font-bold">Guitar Notebook</div>
         <ul className="ml-auto flex gap-6">
           {navItems.map((item) => (
             <li key={item.id}>

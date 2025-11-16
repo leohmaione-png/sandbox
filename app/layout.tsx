@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Blues Academy",
-  description: "Learn blues guitar techniques and scales",
+  title: "Guitar Notebook",
+  description: "Your interactive guitar learning companion - scales, licks, and techniques",
 };
 
 export default function RootLayout({
