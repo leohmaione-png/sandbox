@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blues Academy - Aprenda Blues com Estilo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Blues Academy</div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-section="pentatonic">Pentatônica</li>
+                <li class="nav-item" data-section="greek-modes">Modos Gregos</li>
+                <li class="nav-item" data-section="exercises">Exercícios</li>
+                <li class="nav-item" data-section="progressions">Progressões</li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Domine o Blues</h1>
+            <p class="hero-subtitle">Aprenda escalas, licks e técnicas de forma estruturada e intuitiva</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Pentatonic Section -->
+        <section id="pentatonic" class="content-section active">
+            <div class="section-header">
+                <h2 class="section-title">Escala Pentatônica</h2>
+                <p class="section-description">Selecione o tom e a posição para visualizar diagramas e licks personalizados</p>
+            </div>
+
+            <!-- Unified Controls Section -->
+            <div class="controls-section">
+                <!-- Key Selector -->
+                <div class="control-group">
+                    <label class="control-label">Tom:</label>
+                    <div class="key-buttons">
+                        <button class="key-btn active" data-key="Am">Am</button>
+                        <button class="key-btn" data-key="Em">Em</button>
+                        <button class="key-btn" data-key="Dm">Dm</button>
+                        <button class="key-btn" data-key="Gm">Gm</button>
+                        <button class="key-btn" data-key="Cm">Cm</button>
+                        <button class="key-btn" data-key="A">A</button>
+                        <button class="key-btn" data-key="E">E</button>
+                        <button class="key-btn" data-key="D">D</button>
+                        <button class="key-btn" data-key="G">G</button>
+                        <button class="key-btn" data-key="C">C</button>
+                    </div>
+                </div>
+
+                <!-- Position Selector -->
+                <div class="control-group">
+                    <label for="position-select" class="control-label">Posição:</label>
+                    <select id="position-select" class="position-select">
+                        <option value="1" selected>Posição 1 (Padrão Box)</option>
+                        <option value="2">Posição 2 (Extensão)</option>
+                        <option value="3">Posição 3 (Oitava)</option>
+                        <option value="4">Posição 4 (Cordas Soltas)</option>
+                        <option value="5">Posição 5 (Conexão)</option>
+                        <option value="full">Braço Completo</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Unified Diagrams & Scale Section -->
+            <div class="diagrams-section card">
+                <h3 class="card-title">📍 Diagramas da Pentatônica</h3>
+
+                <!-- Content Grid: Diagram + Scale Notes -->
+                <div class="diagram-content-grid">
+                    <!-- Diagram Display (Left) -->
+                    <div class="diagram-display">
+                        <div class="diagram-header">
+                            <h4 id="diagram-title">Posição 1 - Padrão Box em Am</h4>
+                            <span id="diagram-subtitle">Casa 5</span>
+                        </div>
+                        <div class="diagram-container">
+                            <pre class="fretboard" id="diagram-fretboard">e|---5-------8-------9-------|
+B|---5-------8-------9-------|
+G|---5---7-----------9-------|
+D|---5---7-----------9-------|
+A|---5---7-----------9-------|
+E|---5-------8-------9-------|</pre>
+                        </div>
+                        <p class="diagram-info" id="diagram-info">Posição mais usada no blues. Memorize este padrão primeiro!</p>
+                    </div>
+
+                    <!-- Scale Notes Sidebar (Right) -->
+                    <div class="scale-notes-sidebar">
+                        <h4 class="notes-title">Notas da Escala</h4>
+                        <p class="notes-key-label">Tom: <span id="current-key">Am</span></p>
+                        <div class="notes-display" id="notes-display">
+                            <span class="note-pill">A</span>
+                            <span class="note-pill">C</span>
+                            <span class="note-pill">D</span>
+                            <span class="note-pill">E</span>
+                            <span class="note-pill">G</span>
+                        </div>
+                        <div class="formula-section">
+                            <div class="formula-display">
+                                <span class="formula-label">Fórmula Menor:</span>
+                                <span class="formula-value">1 - ♭3 - 4 - 5 - ♭7</span>
+                            </div>
+                            <div class="formula-display">
+                                <span class="formula-label">Blue Note:</span>
+                                <span class="formula-value">1 - ♭3 - 4 - ♭5 - 5 - ♭7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Licks by Guitarist -->
+            <div class="guitarist-licks-section">
+                <div class="section-header">
+                    <h2 class="section-title" style="margin-top: 3rem;">Licks por Guitarrista</h2>
+                    <p class="section-description">Aprenda frases organizadas do básico ao avançado no estilo de cada mestre</p>
+                    <div class="context-info">
+                        <span class="context-item">
+                            <span class="context-label">Tom:</span>
+                            <span class="context-value" id="licks-current-key">Am</span>
+                        </span>
+                        <span class="context-item">
+                            <span class="context-label">Posição:</span>
+                            <span class="context-value" id="licks-current-position">Posição 1</span>
+                        </span>
+                    </div>
+                </div>
+
+            <!-- Guitarist Tabs -->
+            <div class="guitarist-tabs">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-guitarist="zakk">Zakk Wylde</button>
+                        <button class="tab-btn" data-guitarist="page">Jimmy Page</button>
+                        <button class="tab-btn" data-guitarist="clapton">Eric Clapton</button>
+                        <button class="tab-btn" data-guitarist="hendrix">Jimi Hendrix</button>
+                    </div>
+
+                    <!-- Zakk Wylde Content -->
+                    <div class="tab-content active" data-guitarist="zakk">
+                        <div class="card guitarist-intro">
+                            <div class="guitarist-header">
+                                <h3 class="card-title">Zakk Wylde Style</h3>
+                                <div class="guitarist-tags">
+                                    <span class="tag">Pinch Harmonics</span>
+                                    <span class="tag">Agressivo</span>
+                                    <span class="tag">Power</span>
+                                </div>
+                            </div>
+                            <p class="info-text">Características: Pinch harmonics (harmônicos artificiais), bends agressivos, uso pesado da pentatônica, precisão técnica e força.</p>
+                        </div>
+
+                        <div class="licks-grid">
+                            <div class="lick-card intermediate" data-level="intermediate">
+                                <div class="lick-header">
+                                    <span class="lick-badge intermediate-badge">Intermediário</span>
+                                    <h4 class="lick-title">Pinch Harmonic Attack</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|--------------------------------|
+G|---5PH---7PH---5PH--------------|
+D|-----------------------7---5----|
+A|--------------------------------|
+E|--------------------------------|
+
+PH = Pinch Harmonic (harmônico artificial)</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">90-120 BPM</span>
+                                    <p class="lick-desc">Toque a nota normalmente, mas com o polegar da mão direita tocando levemente a corda logo após a palheta. Som agressivo característico do Zakk!</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card advanced" data-level="advanced">
+                                <div class="lick-header">
+                                    <span class="lick-badge advanced-badge">Avançado</span>
+                                    <h4 class="lick-title">Wide Vibrato Power Lick</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|--------------------------------|
+G|---5---7b(9)~~~~----------------|
+D|----------------7---5---7---5---|
+A|--------------------------------|
+E|--------------------------------|
+
+b(9) = bend de 1 tom inteiro
+~~~~ = vibrato largo e agressivo</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">80-110 BPM</span>
+                                    <p class="lick-desc">Bend grande (2 casas!) seguido de vibrato wide. Use força! Depois descida rápida.</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card advanced" data-level="advanced">
+                                <div class="lick-header">
+                                    <span class="lick-badge advanced-badge">Avançado</span>
+                                    <h4 class="lick-title">Pentatonic Fury</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|---8-5-------8-5----------------|
+G|-------7-5-------7-5-7-5--------|
+D|-------------------------7-5-7-5|
+A|--------------------------------|
+E|--------------------------------|
+
+Palhetada alternada rápida e precisa!</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">120-160 BPM</span>
+                                    <p class="lick-desc">Descida agressiva pela pentatônica. Palhetada alternada perfeita é essencial. Ataque forte!</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card intermediate" data-level="intermediate">
+                                <div class="lick-header">
+                                    <span class="lick-badge intermediate-badge">Intermediário</span>
+                                    <h4 class="lick-title">Double Stop Power</h4>
+                                </div>
+                                <pre class="tab">
+e|---5PH-----8PH-----5PH----------|
+B|---5-------8-------5------------|
+G|--------------------------------|
+D|--------------------------------|
+A|--------------------------------|
+E|--------------------------------|
+
+Double stops com pinch harmonics!</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">90-120 BPM</span>
+                                    <p class="lick-desc">Toque as duas cordas juntas aplicando pinch harmonic. Som massivo!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jimmy Page Content -->
+                    <div class="tab-content" data-guitarist="page">
+                        <div class="card guitarist-intro">
+                            <div class="guitarist-header">
+                                <h3 class="card-title">Jimmy Page Style</h3>
+                                <div class="guitarist-tags">
+                                    <span class="tag">Blues Rock</span>
+                                    <span class="tag">Melódico</span>
+                                    <span class="tag">Expressivo</span>
+                                </div>
+                            </div>
+                            <p class="info-text">Características: Bends melódicos e expressivos, uso criativo da pentatônica, frases vocais, dinâmica entre notas sustentadas e rápidas.</p>
+                        </div>
+
+                        <div class="licks-grid">
+                            <div class="lick-card intermediate" data-level="intermediate">
+                                <div class="lick-header">
+                                    <span class="lick-badge intermediate-badge">Intermediário</span>
+                                    <h4 class="lick-title">Expressive Bend Phrase</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|---5~~~-------------------------|
+G|--------7b(8)~~~---7---5--------|
+D|-------------------------7------|
+A|--------------------------------|
+E|--------------------------------|
+
+~~~ = vibrato expressivo</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">70-100 BPM</span>
+                                    <p class="lick-desc">Comece com vibrato na corda B, depois bend expressivo na corda G. Deixe as notas respirarem!</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card intermediate" data-level="intermediate">
+                                <div class="lick-header">
+                                    <span class="lick-badge intermediate-badge">Intermediário</span>
+                                    <h4 class="lick-title">Melodic Climb</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|---5---8---5--------------------|
+G|-------------7b(8)r7---5--------|
+D|-------------------------7---5--|
+A|--------------------------------|
+E|--------------------------------|
+
+r = release do bend</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">80-110 BPM</span>
+                                    <p class="lick-desc">Frase melódica ascendente com bend e release. Muito usado pelo Page!</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card advanced" data-level="advanced">
+                                <div class="lick-header">
+                                    <span class="lick-badge advanced-badge">Avançado</span>
+                                    <h4 class="lick-title">Bluesy Slide Lick</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|---5/8---8\5--------------------|
+G|-------------7b(8)---5---6---5--|
+D|--------------------------------|
+A|--------------------------------|
+E|--------------------------------|
+
+/ = slide up, \ = slide down</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">85-115 BPM</span>
+                                    <p class="lick-desc">Combina slides com bend e blue note. Toque com feeling!</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card beginner" data-level="beginner">
+                                <div class="lick-header">
+                                    <span class="lick-badge beginner-badge">Básico</span>
+                                    <h4 class="lick-title">Simple Page Phrase</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|---5-------8-------5------------|
+G|-------7-------7-------7--------|
+D|--------------------------------|
+A|--------------------------------|
+E|--------------------------------|</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">70-90 BPM</span>
+                                    <p class="lick-desc">Frase simples mas efetiva. Alterne entre cordas B e G.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Eric Clapton Content -->
+                    <div class="tab-content" data-guitarist="clapton">
+                        <div class="card guitarist-intro">
+                            <div class="guitarist-header">
+                                <h3 class="card-title">Eric Clapton Style</h3>
+                                <div class="guitarist-tags">
+                                    <span class="tag">Blues Puro</span>
+                                    <span class="tag">Smooth</span>
+                                    <span class="tag">Emotivo</span>
+                                </div>
+                            </div>
+                            <p class="info-text">Características: Bends suaves e precisos, vibrato intenso, frases cantadas, uso da pentatônica de forma tradicional e emotiva.</p>
+                        </div>
+
+                        <div class="licks-grid">
+                            <div class="lick-card intermediate" data-level="intermediate">
+                                <div class="lick-header">
+                                    <span class="lick-badge intermediate-badge">Intermediário</span>
+                                    <h4 class="lick-title">Smooth Bend & Vibrato</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|--------------------------------|
+G|---5---7b(8)~~~~~~~~~~~~~~~~~---|
+D|--------------------------------|
+A|--------------------------------|
+E|--------------------------------|
+
+b(8)~~~ = bend com vibrato longo</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">60-90 BPM</span>
+                                    <p class="lick-desc">Bend de 1 tom seguido de vibrato intenso e prolongado. Assinatura do Clapton!</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card intermediate" data-level="intermediate">
+                                <div class="lick-header">
+                                    <span class="lick-badge intermediate-badge">Intermediário</span>
+                                    <h4 class="lick-title">Triplet Blues Lick</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|--------------------------------|
+G|---5-7-5---7-5------------------|
+D|---------------7-5---7-5--------|
+A|-----------------------7--------|
+E|--------------------------------|
+
+Toque em tercinas (grupos de 3)</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">80-110 BPM</span>
+                                    <p class="lick-desc">Triplets clássicos do blues. Conte: 1-e-a 2-e-a 3-e-a 4-e-a</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card advanced" data-level="advanced">
+                                <div class="lick-header">
+                                    <span class="lick-badge advanced-badge">Avançado</span>
+                                    <h4 class="lick-title">Slow Blues Phrase</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|---5~~~---8b(10)r8---5----------|
+G|-----------------------7b(8)~~~~|
+D|--------------------------------|
+A|--------------------------------|
+E|--------------------------------|
+
+Bends de 1 tom inteiro</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">50-80 BPM</span>
+                                    <p class="lick-desc">Frase de slow blues. Cada nota deve cantar! Controle perfeito nos bends.</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card beginner" data-level="beginner">
+                                <div class="lick-header">
+                                    <span class="lick-badge beginner-badge">Básico</span>
+                                    <h4 class="lick-title">Classic Blues Walk</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|--------------------------------|
+G|---5---7---5--------------------|
+D|-------------7---5--------------|
+A|-------------------7------------|
+E|--------------------------------|</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">70-100 BPM</span>
+                                    <p class="lick-desc">Caminhada básica pela pentatônica. Fundamento do blues!</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card intermediate" data-level="intermediate">
+                                <div class="lick-header">
+                                    <span class="lick-badge intermediate-badge">Intermediário</span>
+                                    <h4 class="lick-title">Quick Hammer Phrase</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|--------------------------------|
+G|---5h7p5---5h7p5---5h7p5---5----|
+D|--------------------------------|
+A|--------------------------------|
+E|--------------------------------|
+
+h=hammer, p=pull-off</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">90-130 BPM</span>
+                                    <p class="lick-desc">Hammer-ons e pull-offs rápidos. Precisão e clareza!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jimi Hendrix Content -->
+                    <div class="tab-content" data-guitarist="hendrix">
+                        <div class="card guitarist-intro">
+                            <div class="guitarist-header">
+                                <h3 class="card-title">Jimi Hendrix Style</h3>
+                                <div class="guitarist-tags">
+                                    <span class="tag">Inovador</span>
+                                    <span class="tag">Cromático</span>
+                                    <span class="tag">Experimental</span>
+                                </div>
+                            </div>
+                            <p class="info-text">Características: Uso criativo de double stops, bends microtonais, notas cromáticas, cordas soltas, incorporação de acordes em solos.</p>
+                        </div>
+
+                        <div class="licks-grid">
+                            <div class="lick-card intermediate" data-level="intermediate">
+                                <div class="lick-header">
+                                    <span class="lick-badge intermediate-badge">Intermediário</span>
+                                    <h4 class="lick-title">Double Stop Magic</h4>
+                                </div>
+                                <pre class="tab">
+e|---5-------8-------5------------|
+B|---5-------8-------5------------|
+G|--------7-------7-------7-------|
+D|--------------------------------|
+A|--------------------------------|
+E|--------------------------------|</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">80-110 BPM</span>
+                                    <p class="lick-desc">Double stops intercalados com nota na corda G. Som Hendrix!</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card advanced" data-level="advanced">
+                                <div class="lick-header">
+                                    <span class="lick-badge advanced-badge">Avançado</span>
+                                    <h4 class="lick-title">Chromatic Approach</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|---5---6---7---8---7---6---5----|
+G|--------------------------------|
+D|--------------------------------|
+A|--------------------------------|
+E|--------------------------------|
+
+Notas cromáticas (fora da escala)</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">90-130 BPM</span>
+                                    <p class="lick-desc">Abordagem cromática. Casa 6 e 8 são fora da pentatônica - cria tensão!</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card advanced" data-level="advanced">
+                                <div class="lick-header">
+                                    <span class="lick-badge advanced-badge">Avançado</span>
+                                    <h4 class="lick-title">Microtonal Bend</h4>
+                                </div>
+                                <pre class="tab">
+e|--------------------------------|
+B|--------------------------------|
+G|---7b(7.5)---7b(8)---7b(7.5)----|
+D|--------------------------------|
+A|--------------------------------|
+E|--------------------------------|
+
+b(7.5) = bend de 1/4 de tom</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">70-100 BPM</span>
+                                    <p class="lick-desc">Bends microtonais (menos de 1 semitom). Soa desafinado propositalmente. Puro Hendrix!</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card intermediate" data-level="intermediate">
+                                <div class="lick-header">
+                                    <span class="lick-badge intermediate-badge">Intermediário</span>
+                                    <h4 class="lick-title">Open String Flavor</h4>
+                                </div>
+                                <pre class="tab">
+e|---0---5---0---5---0---5--------|
+B|--------------------------------|
+G|--------------------------------|
+D|--------------------------------|
+A|--------------------------------|
+E|--------------------------------|
+
+0 = corda solta</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">90-120 BPM</span>
+                                    <p class="lick-desc">Cordas soltas intercaladas. Som aberto característico!</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card advanced" data-level="advanced">
+                                <div class="lick-header">
+                                    <span class="lick-badge advanced-badge">Avançado</span>
+                                    <h4 class="lick-title">Chord Tone Solo</h4>
+                                </div>
+                                <pre class="tab">
+e|---5---------------------------|
+B|---5-------8-------------------|
+G|---5-------7-------------------|
+D|---7-------9-------------------|
+A|---7-------10------------------|
+E|---5-------8-------------------|
+
+Acordes completos no solo!</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">80-110 BPM</span>
+                                    <p class="lick-desc">Toque acordes completos durante o solo. Revolucionário!</p>
+                                </div>
+                            </div>
+
+                            <div class="lick-card intermediate" data-level="intermediate">
+                                <div class="lick-header">
+                                    <span class="lick-badge intermediate-badge">Intermediário</span>
+                                    <h4 class="lick-title">Thumb Technique</h4>
+                                </div>
+                                <pre class="tab">
+e|---5---8---5--------------------|
+B|--------------------------------|
+G|---5-------5--------------------|
+D|--------------------------------|
+A|--------------------------------|
+E|---5-------5--------------------|
+
+Use o polegar na corda E!</pre>
+                                <div class="lick-info">
+                                    <span class="tempo">70-100 BPM</span>
+                                    <p class="lick-desc">Toque a corda E grave com o polegar enquanto toca as agudas. Técnica signature do Hendrix!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Greek Modes Section (Coming Soon) -->
+        <section id="greek-modes" class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">Modos Gregos</h2>
+                <p class="section-description">Em breve: Jônio, Dórico, Frígio, Lídio, Mixolídio, Eólio e Lócrio</p>
+            </div>
+            <div class="card coming-soon">
+                <h3>Em Desenvolvimento</h3>
+                <p>Os modos gregos estarão disponíveis em breve com explicações detalhadas de quando usar cada um.</p>
+            </div>
+        </section>
+
+        <!-- Exercises Section -->
+        <section id="exercises" class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">Exercícios de Técnica</h2>
+                <p class="section-description">Desenvolva força, velocidade e precisão</p>
+            </div>
+
+            <div class="exercises-grid">
+                <div class="card">
+                    <h3 class="card-title">Aquecimento Cromático</h3>
+                    <pre class="tab">
+e|---5---6---7---8---|---8---7---6---5---|
+B|---5---6---7---8---|---8---7---6---5---|
+G|---5---6---7---8---|---8---7---6---5---|
+D|---5---6---7---8---|---8---7---6---5---|
+A|---5---6---7---8---|---8---7---6---5---|
+E|---5---6---7---8---|---8---7---6---5---|</pre>
+                    <div class="exercise-meta">
+                        <span class="tempo">60-120 BPM</span>
+                        <span class="detail">Dedilhado: 1-2-3-4</span>
+                    </div>
+                    <p class="info-text">Aqueça os dedos antes de tocar. Mantenha ritmo constante.</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Treinamento de Bends</h3>
+                    <pre class="tab">
+e|--------------------------------|
+B|--------------------------------|
+G|---7b(8)---7b(8)---7b(8)--------|
+D|--------------------------------|
+A|--------------------------------|
+E|--------------------------------|
+
+Pratique: 1/2 tom, 1 tom, 1 tom e meio</pre>
+                    <div class="exercise-meta">
+                        <span class="tempo">Use afinador</span>
+                    </div>
+                    <p class="info-text">Fundamental para blues! Pratique até afinar perfeitamente.</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Hammer-On / Pull-Off</h3>
+                    <pre class="tab">
+e|--------------------------------|
+B|---5h8p5---5h8p5---5h8p5--------|
+G|--------------------------------|
+D|---5h7p5---5h7p5---5h7p5--------|
+A|---5h7p5---5h7p5---5h7p5--------|
+E|--------------------------------|
+
+h=hammer-on, p=pull-off</pre>
+                    <div class="exercise-meta">
+                        <span class="tempo">60-120 BPM</span>
+                    </div>
+                    <p class="info-text">Legato essencial para blues. Volume uniforme!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progressions Section -->
+        <section id="progressions" class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">Progressões de Blues</h2>
+                <p class="section-description">Estruturas harmônicas clássicas do blues</p>
+            </div>
+
+            <div class="progressions-grid">
+                <div class="card">
+                    <h3 class="card-title">Blues Básico 12 Compassos</h3>
+                    <pre class="progression">
+| Am7  | Am7  | Am7  | Am7  |    (I - 4 compassos)
+| Dm7  | Dm7  | Am7  | Am7  |    (IV - 2, I - 2)
+| E7   | Dm7  | Am7  | E7   |    (V - IV - I - V)
+
+Acordes:
+Am7: x-0-2-0-1-0  ou  5-7-5-5-5-5
+Dm7: x-x-0-2-1-1  ou  10-12-10-10-10-10
+E7:  0-2-0-1-0-0  ou  7-9-7-9-7-7</pre>
+                    <p class="info-text">Progressão clássica de 12 compassos. Base para 90% dos blues!</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Blues Shuffle</h3>
+                    <pre class="progression">
+Padrão de shuffle (alterna tônica e sexta):
+
+Am shuffle:
+e|--------------------------------|
+B|--------------------------------|
+G|--------------------------------|
+D|---7---7---7---7---7---7---7-7--|
+A|---5-7-5-7-5-7-5-7-5-7-5-7-5-7--|
+E|--------------------------------|
+
+Dm shuffle (sobe para casa 10)
+E7 shuffle (sobe para casa 12)</pre>
+                    <p class="info-text">Groove característico do blues.</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Turnaround em Am</h3>
+                    <pre class="progression">
+Últimos 2 compassos (volta para o início):
+
+| Am - G - F - E7 |
+
+Tablatura do turnaround clássico:
+e|---5-------3-------1-------0----|
+B|---5-------3-------1-------0----|
+G|---5-------4-------2-------1----|
+D|---7-------5-------3-------2----|
+A|---7-------5-------3-------2----|
+E|---5-------3-------1-------0----|</pre>
+                    <p class="info-text">Use no final de 12 compassos para retornar suavemente.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Blues Academy - Aprenda blues com estilo e técnica</p>
+            <p class="footer-note">Pratique diariamente e ouça os mestres: B.B. King, Stevie Ray Vaughan, Eric Clapton</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
