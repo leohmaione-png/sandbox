@@ -22,8 +22,8 @@ export function PentatonicSection() {
         </p>
       </div>
 
-      {/* Controls */}
-      <Card className="p-6">
+      {/* Controls - Sticky */}
+      <Card className="sticky top-20 z-40 p-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
         <div className="grid gap-6 md:grid-cols-[7fr_3fr]">
           <KeySelector
             selectedKey={selectedKey}
