@@ -6,6 +6,7 @@ import { KeySelector } from "./KeySelector";
 import { PositionSelector } from "./PositionSelector";
 import { FretboardDiagram } from "./FretboardDiagram";
 import { ScaleNotes } from "./ScaleNotes";
+import { GuitaristLicks } from "./GuitaristLicks";
 import { type Key } from "@/lib/data/scales";
 
 export function PentatonicSection() {
@@ -47,22 +48,11 @@ export function PentatonicSection() {
         </div>
       </div>
 
-      {/* Licks Section - To be implemented */}
-      <div>
-        <h3 className="mb-2 text-2xl font-bold">Licks por Guitarrista</h3>
-        <p className="mb-4 text-muted-foreground">
-          Aprenda frases organizadas do básico ao avançado no estilo de cada mestre
-        </p>
-        <Card className="p-6">
-          <p className="text-center text-muted-foreground">
-            Seção de licks em desenvolvimento...
-            <br />
-            <span className="text-sm">
-              (Zakk Wylde, Jimmy Page, Eric Clapton, Jimi Hendrix)
-            </span>
-          </p>
-        </Card>
-      </div>
+      {/* Licks Section */}
+      <GuitaristLicks
+        selectedKey={selectedKey}
+        selectedPosition={selectedPosition}
+      />
     </section>
   );
 }
